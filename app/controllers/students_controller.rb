@@ -1,4 +1,5 @@
 class StudentsController < ApplicationController
+  before_action :set_student, only: [:edit, :update, :show, :destory]
   
   def index
     @students = Student.all
@@ -20,15 +21,12 @@ class StudentsController < ApplicationController
   end
 
   def show
-    @student = Student.find(params[:id])
   end
   
   def edit
-    @student = Student.find(params[:id])
   end
 
   def update
-    @student = Student.find(params[:id])
       if @student.update(student_params)
         flash[:success] = "Object was successfully updated"
         redirect_to student_path(@student)
@@ -37,6 +35,13 @@ class StudentsController < ApplicationController
         render 'edit'
       end
   end
+
+  def destroy  
+    @student.destroy
+      flash[:success] = 'Object was successfully deleted.'
+      redirect_to students_path
+  end
+  
   
   
 
@@ -44,4 +49,9 @@ class StudentsController < ApplicationController
   def student_params
     params.require(:student).permit(:first_name, :last_name, :email)
   end
+
+  def set_student
+    @student = Student.find(params[:id])
+  end
+
 end
