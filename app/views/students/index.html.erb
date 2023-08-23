@@ -6,6 +6,7 @@
             <th>First Name</th>
             <th>Last Name</th>
             <th>E-mail</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -15,6 +16,7 @@
                 <td><%= student.last_name %></td>
                 <td><%= student.email %></td>
                 <td><%= link_to "View", student %></td>
+                <td><%= link_to "Edit", edit_student_path(student) %></td>
             </tr>
         <% end %>
     </tbody>
