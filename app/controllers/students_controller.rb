@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  before_action :set_student, only: [:edit, :update, :show, :destory]
+  before_action :set_student, only: [:edit, :update, :show, :destroy]
   
   def index
     @students = Student.all
@@ -12,7 +12,7 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(student_params)
     if @student.save
-      flash[:success] = "Object successfully created"
+      flash[:success] = "Student successfully created"
       redirect_to students_path
     else
       flash[:error] = "Something went wrong"
@@ -28,7 +28,7 @@ class StudentsController < ApplicationController
 
   def update
       if @student.update(student_params)
-        flash[:success] = "Object was successfully updated"
+        flash[:success] = "Student was successfully updated"
         redirect_to student_path(@student)
       else
         flash[:error] = "Something went wrong"
@@ -38,7 +38,7 @@ class StudentsController < ApplicationController
 
   def destroy  
     @student.destroy
-      flash[:success] = 'Object was successfully deleted.'
+      flash[:success] = 'Student was successfully deleted.'
       redirect_to students_path
   end
   
