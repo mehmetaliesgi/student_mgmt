@@ -20,3 +20,10 @@ student = Student.create(
     email: "student#{i+1}@student.com"
   )
 end
+
+Student.all.each do |s|
+  s.blogs.create(title: "Dummy Blog for Student #{s.id}",
+    content: "Costom content pending")
+    s.blogs.create(title: "Dummy Blog for Student #{s.id}",
+    content: "Costom content pending")
+end
