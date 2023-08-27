@@ -8,6 +8,9 @@ class Student < ApplicationRecord
   validates :email, uniqueness: :true
   validates :email, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: "Geçersiz e-posta formatı" }
   validates :first_name, :last_name, length: {minimum:2, maximum:20}
+  validates :first_name, :last_name, format: { with: /\A[a-zA-Z]+\z/, message: "Sadece harf karakterleri kullanılabilir."}
+  
+  validate :validate_student_age
 
   after_create :display_student_age
   def display_student_age
@@ -16,6 +19,15 @@ class Student < ApplicationRecord
       puts "========= Age of student is #{age} =============="
     else
       puts "Age can not be calculated without date_of_birth"
+    end
+  end
+
+  def validate_student_age
+    if self.date_of_birth.present?
+      age = Date.today.year - self.date_of_birth.year
+      if age < 15
+        errors.add(:age, "Please provide a valid date of birth here. Age must to be greather than 15.")
+      end
     end
   end
 
