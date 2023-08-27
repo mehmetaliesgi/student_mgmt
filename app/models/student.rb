@@ -5,6 +5,9 @@ class Student < ApplicationRecord
   has_many :projects, through: :student_projects 
 
   validates :first_name, :last_name, :email, presence: true
+  validates :email, uniqueness: :true
+  validates :email, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: "Geçersiz e-posta formatı" }
+  validates :first_name, :last_name, length: {minimum:2, maximum:20}
 
   after_create :display_student_age
   def display_student_age
