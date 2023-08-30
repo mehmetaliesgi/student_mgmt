@@ -1,0 +1,30 @@
+<%= form_for(blog, html: {'data-turbo' => "false"}) do |form| %>
+
+    <% if @blog.errors.any? %>
+    <ul>
+    <% @blog.errors.full_messages.each do |message| %>
+        <div class="alert alert-danger">
+        <li><%= message %></li>
+        </div> 
+    <% end %>
+    </ul>
+    <% end %>
+
+    <div>
+        <%= form.label :title %> <br>
+        <%= form.text_field :title %>
+    </div>
+    <div>
+        <%= form.label :content %> <br>
+        <%= form.text_field :content %>
+    </div>
+    <div>
+        <%= form.label :student_id %> <br>
+        <%= form.number_field :student_id %>
+    </div>
+
+    <div>
+        <%= form.submit %>
+        <%= link_to 'Cancel', blogs_path %>
+    </div>
+<% end %>
