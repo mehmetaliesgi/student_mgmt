@@ -1,7 +1,5 @@
 class Course < ApplicationRecord
-  has_and_belongs_to_many :students
+  include Validatable
 
-  validates :name, :description, presence: :true
-  validates :name, uniqueness: true
-  validates :description, length: {minimum:20, maximum:520}
-end5
+  has_and_belongs_to_many :students
+end
