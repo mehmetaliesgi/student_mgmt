@@ -1,14 +1,18 @@
-<p style="color: green"><%= notice %></p>
+<div class="col-lg-8">
 
-<h1>Courses</h1>
+  <p style="color: green"><%= notice %></p>
 
-<div id="courses">
-  <% @courses.each do |course| %>
-    <%= render course %>
-    <p>
-      <%= link_to "Show this course", course %>
-    </p>
-  <% end %>
+  <h1>Courses</h1>
+
+  <div id="courses">
+    <% @courses.each do |course| %>
+      <%= render course %>
+      <p>
+        <%= link_to "Show this course", course %>
+      </p>
+    <% end %>
+  </div>
+
+  <%= link_to "New course", new_course_path %>
+
 </div>
-
-<%= link_to "New course", new_course_path %>

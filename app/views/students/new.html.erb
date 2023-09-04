@@ -1,5 +1,9 @@
-<%= render "students/partials/flash_messages" %>
+<div class="col-lg-8">
 
-<h1>New Student</h1>
+    <%= render "students/partials/flash_messages" %>
+    
+    <h1>New Student</h1>
+    
+    <%= render "students/partials/form", student: @student %>
 
-<%= render "students/partials/form", student: @student %>
+</div>
