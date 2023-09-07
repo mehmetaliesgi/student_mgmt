@@ -1,0 +1,21 @@
+<div class="col-lg-10">
+    <div class="card rounded-0 shadow mt-5 mb-5">
+        <div class="card-body">
+            <%= render "admin/students/partials/flash_messages" %>
+            
+            <h1>Student Detail</h1>
+            <p><strong>Name: </strong><%= @student.full_name %></p>
+            <p><strong>E-mail: </strong><%= @student.email %></p>
+            <p><strong>Date of Birth: </strong><%= formatted_date(@student.date_of_birth) %></p>
+            <p><strong>Age: </strong><%= @student.age %></p>
+            <p><strong>Permanent Address: </strong><%= @student.permanent_address %></p>
+            <p><strong>Local Address: </strong><%= @student.local_address %></p>
+            <p><strong>Permanent Contact: </strong><%= @student.permanent_contact_number %></p>
+            <p><strong>Alternate Contact: </strong><%= @student.alternate_contact_number %></p>
+        
+            <%= link_to 'Back', admin_students_path, class: "btn btn-danger btn-lg" %> | <%= link_to 'Edit', edit_admin_student_path(@student), class: "btn btn-warning btn-lg" %>
+        </div>
+    </div>
+
+
+</div>
