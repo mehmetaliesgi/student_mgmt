@@ -1,4 +1,5 @@
 class StudentsController < ApplicationController
+  layout 'admin'
   before_action :set_student, only: [:edit, :update, :show, :destroy]
 
   helper_method :formatted_date
