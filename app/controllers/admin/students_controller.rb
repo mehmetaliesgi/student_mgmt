@@ -5,7 +5,7 @@ class Admin::StudentsController < AdminController
   helper_method :formatted_date
   
   def index
-    @students = Student.all.order(first_name: :desc)
+    @pagy, @students = pagy(Student.all.order(first_name: :desc))
   end
 
   def new
