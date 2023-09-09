@@ -5,7 +5,8 @@ class Admin::StudentsController < AdminController
   helper_method :formatted_date
   
   def index
-    @pagy, @students = pagy(Student.all.order(first_name: :desc))
+    @q = Student.ransack(params[:q])
+    @pagy, @students = pagy(@q.result(distinct: true))
   end
 
   def new

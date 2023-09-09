@@ -14,7 +14,7 @@
         <% @blogs.each do |blog| %>
             <tr>
                 <td><%= blog.title %></td>
-                <td><%= link_to "#{blog.name_with_email}", blog.student %></td>
+                <td><%= link_to "#{blog.name_with_email}", admin_student_path(blog) %></td>
                 <td><%= link_to "View", blog %></td>
                 <td><%= link_to "Edit", edit_blog_path(blog) %></td>
                 <td><%= link_to 'Delete',blog_path(blog),data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}%></td>
