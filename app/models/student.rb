@@ -43,4 +43,8 @@ class Student < ApplicationRecord
   def name_with_email
     "#{full_name} / #{email}"
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["address", "email", "first_name", "last_name", "date_of_birth", "contact"]
+  end
 end
