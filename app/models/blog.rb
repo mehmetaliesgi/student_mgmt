@@ -12,4 +12,9 @@ class Blog < ApplicationRecord
   def name_with_email
     "#{full_name} / #{student.email}"
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["content", "created_at", "student_id", "title", "updated_at", "student"]
+  end
+
 end

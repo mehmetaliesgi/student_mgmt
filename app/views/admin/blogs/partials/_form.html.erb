@@ -1,0 +1,32 @@
+<%= form_for(([:admin, @blog]), html: {'data-turbo' => "false"}) do |form| %>
+
+    <% if @blog.errors.any? %>
+    <ul>
+    <% @blog.errors.full_messages.each do |message| %>
+        <div class="alert alert-danger">
+        <li><%= message %></li>
+        </div> 
+    <% end %>
+    </ul>
+    <% end %>
+
+    <div class="form-group">
+        <%= form.label :title %> <br>
+        <%= form.text_field :title, class: "form-control form-control-lg"%>
+    </div>
+
+    <div class="form-group">
+        <%= form.label :content %> <br>
+        <%= form.text_field :content, class: "form-control form-control-lg" %>
+    </div>
+
+    <div class="form-group">
+        <%= form.label :student_id %> <br>
+        <%= form.number_field :student_id, class: "form-control form-control-lg" %>
+    </div>
+
+    <div class="form-group">
+        <%= form.submit class: "btn btn-primary btn-lg" %>
+        <%= link_to 'Cancel', admin_blogs_path, class: "btn btn-danger btn-lg" %>
+    </div>
+<% end %>

@@ -52,6 +52,7 @@ gem "pagy"
 gem 'ransack'
 gem "faker"
 gem "font-awesome-sass", "~> 6.4.2"
+gem "devise"
 
 
 group :development, :test do
