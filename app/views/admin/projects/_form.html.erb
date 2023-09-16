@@ -1,4 +1,4 @@
-<%= form_with(model: project) do |form| %>
+<%= form_for(([:admin, @project]), html: {'data-turbo' => "false"}) do |form| %>
   <% if project.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
@@ -23,6 +23,6 @@
 
   <div class="form-group">
     <%= form.submit class: "btn btn-primary btn-lg" %>
-    <%= link_to "Back to projects", projects_path, class: "btn btn-danger btn-lg" %>
+    <%= link_to "Back to projects", admin_projects_path, class: "btn btn-danger btn-lg" %>
   </div>
 <% end %>
