@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :admin_users
+  devise_for :admin_users, controllers: {
+    sessions: 'admin_user/sessions',
+    registrations: 'admin_user/registrations',
+    passwords: 'admin_user/passwords'
+  }
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

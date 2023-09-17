@@ -1,82 +1,70 @@
-
-<body class="bg-gradient-primary">
-
-    <div class="container">
-
-        <div class="card o-hidden border-0 shadow-lg my-5">
-            <div class="card-body p-0">
-                <!-- Nested Row within Card Body -->
-                <div class="row">
-                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
-                    <div class="col-lg-7">
-                        <div class="p-5">
-                            <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
-                            </div>
-                            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-                            <%= render "devise/shared/error_messages", resource: resource %>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                      <%= f.label :name %><br />
-                                      <%= f.text_field :name, autofocus: true, placeholder: "First Name", class: "form-control form-control-user" %>
-                                    </div>
-                                    <div class="col-sm-6">
-                                      <%= f.label :lastname %><br />
-                                      <%= f.text_field :lastname, autofocus: true, placeholder: "Last Name", class: "form-control form-control-user" %>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                  <%= f.label :email %><br />
-                                  <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email Address", class: "form-control form-control-user" %>
-                                </div>
-                                <div class="form-group">
-                                      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-                                      <%= f.password_field :password, autocomplete: "new-password", class: "form-control form-control-user" %>
-                                      <% if @minimum_password_length %>
-                                        <br />
-                                        <em><%= @minimum_password_length %> characters minimum</em>
-                                      <% end %>
-                                </div>
-                                <div class="form-group">
-                                      <%= f.label :password_confirmation %><br />
-                                      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control form-control-user" %>
-                                </div>
-
-                                <div class="form-group">
-                                  <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-                                  <%= f.password_field :current_password, autocomplete: "current-password",  class: "form-control form-control-user" %>
-                                </div>
-                                <%= f.submit "Update", class: "btn btn-primary btn-user btn-block" %>
-                              <% end %>
-                               
-                            <hr>
-                            <div class="text-center">
-                              <%= link_to "Forgot Password?", new_admin_user_password_path, class: "small" %> 
-                            </div>
-                            <div class="text-center">
-                              <%= link_to "Already have an account? Login!", new_admin_user_session_path, class: "small" %> 
-                            </div>
-                            <h3 class="text-center">Cancel my account</h3>
-
-                            <div class="text-center">Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-sm" %></div>
-
-                            <%= link_to "Back", admin_dashboard_path, class: "btn btn-info btn-sm" %>
-                        </div>
-                    </div>
+<div class="card o-hidden border-0 shadow-lg my-5">
+  <div class="card-body p-0">
+    <!-- Nested Row within Card Body -->
+    <div class="row">
+      <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+      <div class="col-lg-7">
+        <div class="p-5">
+          <div class="text-center">
+            <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+          </div>
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "user" }) do
+            |f| %>
+            <%= render "devise/shared/error_messages" , resource: resource %>
+              <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <%= f.label :name %><br />
+                    <%= f.text_field :name, autofocus: true, placeholder: "First Name" ,
+                      class: "form-control form-control-user" %>
                 </div>
-            </div>
+                <div class="col-sm-6">
+                  <%= f.label :lastname %><br />
+                    <%= f.text_field :lastname, autofocus: true, placeholder: "Last Name" ,
+                      class: "form-control form-control-user" %>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label :email %><br />
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email" , placeholder: "Email Address" ,
+                    class: "form-control form-control-user" %>
+              </div>
+              <div class="form-group">
+                <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+                  <%= f.password_field :password, autocomplete: "new-password" , class: "form-control form-control-user"
+                    %>
+                    <% if @minimum_password_length %>
+                      <br />
+                      <em>
+                        <%= @minimum_password_length %> characters minimum
+                      </em>
+                      <% end %>
+              </div>
+              <div class="form-group">
+                <%= f.label :password_confirmation %><br />
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password" ,
+                    class: "form-control form-control-user" %>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+                  <%= f.password_field :current_password, autocomplete: "current-password" ,
+                    class: "form-control form-control-user" %>
+              </div>
+              <%= f.submit "Update" , class: "btn btn-primary btn-user btn-block" %>
+                
+
+                  <hr>
+                  
+                  <h3 class="text-center">Cancel my account</h3>
+
+                  <div class="text-center">Unhappy? <%= button_to "Cancel my account" ,
+                      registration_path(resource_name), data: { confirm: "Are you sure?" ,
+                      turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-sm" %>
+                  </div>
+
+                  <%= link_to "Back" , admin_dashboard_path, class: "btn btn-info btn-sm" %>
+        <% end %>
         </div>
-
+      </div>
     </div>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="/vendor/jquery/jquery.min.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="/js/sb-admin-2.min.js"></script>
-
-</body>
+  </div>
