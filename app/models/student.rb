@@ -1,4 +1,6 @@
 class Student < ApplicationRecord
+  has_one_attached :profile_image
+
   has_many :blogs
   has_and_belongs_to_many :courses
   has_many :student_projects
