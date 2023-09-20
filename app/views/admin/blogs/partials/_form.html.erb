@@ -1,14 +1,6 @@
 <%= form_for(([:admin, @blog]), html: {'data-turbo' => "false"}) do |form| %>
 
-    <% if @blog.errors.any? %>
-    <ul>
-    <% @blog.errors.full_messages.each do |message| %>
-        <div class="alert alert-danger">
-        <li><%= message %></li>
-        </div> 
-    <% end %>
-    </ul>
-    <% end %>
+    <%= render 'admin/shared/error', model: blog %>
 
     <div class="form-group">
         <%= form.label :title %> <br>
